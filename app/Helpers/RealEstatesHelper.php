@@ -45,7 +45,13 @@ if (!function_exists('getCities')) {
 if (!function_exists('getUserMarketers')) {
     function getUserMarketers()
     {
-        return User::data()->where('user_type', 'marketer')->where('user_status', 'active')->get();
+        $user = auth()->user();
+        $branches_ids = $user->branches->pluck('id')->toArray();
+        $users = User::conBranches($branches_ids)
+            ->where('user_type', 'marketer')
+            ->where('user_status', 'active')
+            ->get();
+        return $users;
     }
 }
 
@@ -425,7 +431,22 @@ if (!function_exists('getBranchesUser')) {
     {
         $user = auth()->user();
         if ($user) {
-            return $user->branches;
+
+            if ($user->user_type == 'superadmin') {
+                return Branch::all();
+            }
+
+            if ($user->user_type == 'admin') {
+                return $user->branches;
+            }
+
+            if ($user->user_type == 'marketer') {
+                return $user->branches;
+            }
+
+            if ($user->user_type == 'officer') {
+                return $user->branches;
+            }
         }
     }
 }

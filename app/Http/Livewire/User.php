@@ -31,7 +31,7 @@ class User extends Component
         $this->filters['user_status'] = $this->user_status;
         $this->filters['branch_id'] = $this->branch_id;
 
-        return ModelsUser::data()->whereNot('user_type', 'superadmin')->filters($this->filters)->paginate($this->rows_number);
+        return ModelsUser::data()->filters($this->filters)->whereNot('user_type', 'superadmin')->whereNot('id', auth()->id())->paginate($this->rows_number);
     }
 
     public function changeUserStatus($user_id)

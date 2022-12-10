@@ -139,6 +139,12 @@ class User extends Authenticatable
         });
     }
 
+    public function scopeConBranches($query, $ids)
+    {
+        return $query->whereHas('branches', function ($query) use ($ids) {
+            $query->whereIn('id', $ids);
+        });
+    }
 
 
     public function scopeData($query)

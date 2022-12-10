@@ -105,16 +105,6 @@ class HomeController extends Controller
     public function order(Order $order)
     {
         $user = auth()->user();
-
-        if ($user->user_type != 'superadmin') {
-            $check = $user->orders->where('id', $order->id)->first();
-            if (!($order->assign_to == $user->id)) {
-                if (!Gate::allows('can_show_orders') || !$check) {
-                    return redirect()->route('panel.home');
-                }
-            }
-        }
-
         return view('admin-panel.order.order-view', compact(['order']));
     }
 

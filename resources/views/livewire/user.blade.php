@@ -135,7 +135,7 @@
                                 <td>
                                     <select>
                                         @foreach ($user->branches as $branch)
-                                            <option>{{ $branch->name }}</option>
+                                            <option selected>{{ $branch->name }}</option>
                                         @endforeach
                                     </select>
 
