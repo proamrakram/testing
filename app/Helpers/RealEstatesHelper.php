@@ -46,12 +46,36 @@ if (!function_exists('getUserMarketers')) {
     function getUserMarketers()
     {
         $user = auth()->user();
-        $branches_ids = $user->branches->pluck('id')->toArray();
-        $users = User::conBranches($branches_ids)
-            ->where('user_type', 'marketer')
-            ->where('user_status', 'active')
-            ->get();
-        return $users;
+
+        if ($user) {
+            if ($user->user_type == 'superadmin') {
+                $branches_ids = Branch::all()->pluck('id')->toArray();
+                $users = User::conBranches($branches_ids)
+                    ->where('user_type', 'marketer')
+                    ->where('user_status', 'active')
+                    ->get();
+                return $users;
+            }
+
+            if ($user->user_type == 'admin') {
+                $branches_ids = $user->branches->pluck('id')->toArray();
+                $users = User::conBranches($branches_ids)
+                    ->where('user_type', 'marketer')
+                    ->where('user_status', 'active')
+                    ->get();
+                return $users;
+            }
+
+
+            if ($user->user_type == 'marketer') {
+                $branches_ids = $user->branches->pluck('id')->toArray();
+                $users = User::conBranches($branches_ids)
+                    ->where('user_type', 'marketer')
+                    ->where('user_status', 'active')
+                    ->get();
+                return $users;
+            }
+        }
     }
 }
 
