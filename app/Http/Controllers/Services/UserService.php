@@ -88,7 +88,7 @@ class UserService extends Controller
             'name' => $data['name'],
             'phone' => $data['phone'],
             'email' => $data['email'],
-            'password' => Hash::make($data['email']),
+            'password' => Hash::make($data['password']),
             'user_status' => $user_status,
             'user_type' => $data['user_type'],
             'verification_code' => $code,

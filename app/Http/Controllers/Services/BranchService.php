@@ -15,44 +15,13 @@ class BranchService extends Controller
         $this->request = $request;
     }
 
-    public function store()
+    public function store($data)
     {
-        $this->request->validate([
-            'branch_name' => ['required', 'unique:branches,name'],
-            'branch_code' => ['required', 'unique:branches,code'],
-            'city_id' => ['required', 'exists:cities,id'],
-        ], [
-            'branch_name.required' => 'هذا الحقل مطلوب',
-            'branch_code.required' => 'هذا الحقل مطلوب',
-            'branch_name.unique' => 'اسم الفرع موجود مسبقا',
-            'branch_code.unique' => 'كود القسم موجود مسبقا',
-        ]);
-
         $branch = Branch::create([
-            'name' => $this->request->branch_name,
-            'code' => $this->request->branch_code,
-            'city_id' => $this->request->city_id,
+            'name' => $data['branch_name'],
+            'code' => $data['branch_code'],
+            'city_id' => $data['city_id'],
         ]);
-
-        return response()->json([
-            'status' => true,
-            'message' => '👍 تم تحديث الفروع بنجاح',
-        ]);
-
-        // return redirect()->route('panel.branches')->with('message', '👍 تم تحديث الفروع بنجاح');
-    }
-
-    public function edit($id)
-    {
-        $branch = Branch::find($id);
-
-        $branch->update([
-            'name' => $this->request->branch_name,
-            'code' => $this->request->branch_code,
-            'city_id' => $this->request->city_id,
-        ]);
-
-        return redirect()->route('panel.branches')->with('message',  '👍 تم تحديث الفرع بنجاح');
     }
 
     public function update($branch, $validatedData)
@@ -65,8 +34,6 @@ class BranchService extends Controller
 
         return true;
     }
-
-
 
     public function changeBranchStatus($branch_id)
     {

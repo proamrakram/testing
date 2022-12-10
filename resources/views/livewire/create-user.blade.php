@@ -101,180 +101,180 @@
 
                 </div>
 
-                <div style="display: @if (!$permissions) none @endif;">
-                    <div class="content-header mb-2">
-                        <h2 class="fw-bolder mb-75">الصلاحيات</h2>
-                    </div>
 
-                    <div class="row">
-                        <div class="table-responsive">
-                            <table class="table table-flush-spacing">
-                                <tbody>
+                        <div style="display: @if (!$permissions) none @endif;">
+                            <div class="content-header mb-2">
+                                <h2 class="fw-bolder mb-75">الصلاحيات</h2>
+                            </div>
 
-                                    <tr>
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-flush-spacing">
+                                        <tbody>
 
-                                        @livewire('select2')
-                                        @error('branches_ids')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </tr>
-
-                                    <tr>
-                                        <div class="col-md-6 mt-1">
-                                            <label class="form-label">اختيار نوع
-                                                المستخدم</label>
-                                            <select class="select2 form-select" wire:model='user_type'>
-                                                <option value="admin">مدير</option>
-                                                <option value="office">مكتب</option>
-                                                <option value="marketer">مسوق</option>
-                                            </select>
-                                            @error('user_type')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-
-                                        @if ($is_officer)
-                                            <div class="form-input form-input-primary form-input col-md-6 mt-1">
-                                                <input type="text" class="form-control" placeholder="رقم المعلن"
-                                                    wire:model='advertiser_number'>
-                                                @error('advertiser_number')
+                                            <tr>
+                                                @livewire('select2')
+                                                @error('branches_ids')
                                                     <small class="text-danger">{{ $message }}</small>
                                                 @enderror
-                                            </div>
-                                        @endif
+                                            </tr>
 
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-nowrap fw-bolder">الوسطاء</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div class="form-check me-3 me-lg-5">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        wire:model="manage_mediators">
-                                                    <label class="form-check-label" for="manageMediators">
-                                                        تحكم </label>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-nowrap fw-bolder">الرسائل الجماعية</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div class="form-check me-3 me-lg-5">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        wire:model="can_send_sms_collection">
-                                                    <label class="form-check-label">
-                                                        تحكم
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-nowrap fw-bolder">الرسائل الفردية</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div class="form-check me-3 me-lg-5">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        wire:model="can_send_sms_individually">
-                                                    <label class="form-check-label"> تحكم
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-nowrap fw-bolder">الطلبات</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div class="form-check me-3 me-lg-5">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        wire:model='can_show_orders'>
-                                                    <label class="form-check-label"> رؤية </label>
+                                            <tr>
+                                                <div class="col-md-6 mt-1">
+                                                    <label class="form-label">اختيار نوع
+                                                        المستخدم</label>
+                                                    <select class="select2 form-select" wire:model='user_type'>
+                                                        <option value="admin">مدير</option>
+                                                        <option value="office">مكتب</option>
+                                                        <option value="marketer">مسوق</option>
+                                                    </select>
+                                                    @error('user_type')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
 
-                                                <div class="form-check me-3 me-lg-5">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        wire:model='can_add_orders'>
-                                                    <label class="form-check-label" for="canAdd"> اضافة </label>
-                                                </div>
+                                                @if ($is_officer)
+                                                    <div class="form-input form-input-primary form-input col-md-6 mt-1">
+                                                        <input type="text" class="form-control" placeholder="رقم المعلن"
+                                                            wire:model='advertiser_number'>
+                                                        @error('advertiser_number')
+                                                            <small class="text-danger">{{ $message }}</small>
+                                                        @enderror
+                                                    </div>
+                                                @endif
 
-                                                <div class="form-check me-3 me-lg-5">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        wire:model='can_edit_orders'>
-                                                    <label class="form-check-label" for="canEdit"> تعديل
-                                                    </label>
-                                                </div>
+                                            </tr>
 
-                                                <div class="form-check me-3 me-lg-5">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        wire:model='can_cancel_orders'>
-                                                    <label class="form-check-label" for="canCancel">إلغاء</label>
-                                                </div>
+                                            <tr>
+                                                <td class="text-nowrap fw-bolder">الوسطاء</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <div class="form-check me-3 me-lg-5">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                wire:model="manage_mediators">
+                                                            <label class="form-check-label" for="manageMediators">
+                                                                تحكم </label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            <tr>
+                                                <td class="text-nowrap fw-bolder">الرسائل الجماعية</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <div class="form-check me-3 me-lg-5">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                wire:model="can_send_sms_collection">
+                                                            <label class="form-check-label">
+                                                                تحكم
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                    <tr>
-                                        <td class="text-nowrap fw-bolder">الحالة</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div class="form-check form-check-primary form-switch">
-                                                    <input type="checkbox" class="form-check-input"
-                                                        wire:model='user_status'>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            <tr>
+                                                <td class="text-nowrap fw-bolder">الرسائل الفردية</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <div class="form-check me-3 me-lg-5">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                wire:model="can_send_sms_individually">
+                                                            <label class="form-check-label"> تحكم
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                    <tr>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                    </tr>
+                                            <tr>
+                                                <td class="text-nowrap fw-bolder">الطلبات</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <div class="form-check me-3 me-lg-5">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                wire:model='can_show_orders'>
+                                                            <label class="form-check-label"> رؤية </label>
+                                                        </div>
+
+                                                        <div class="form-check me-3 me-lg-5">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                wire:model='can_add_orders'>
+                                                            <label class="form-check-label" for="canAdd"> اضافة </label>
+                                                        </div>
+
+                                                        <div class="form-check me-3 me-lg-5">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                wire:model='can_edit_orders'>
+                                                            <label class="form-check-label" for="canEdit"> تعديل
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="form-check me-3 me-lg-5">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                wire:model='can_cancel_orders'>
+                                                            <label class="form-check-label" for="canCancel">إلغاء</label>
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="text-nowrap fw-bolder">الحالة</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <div class="form-check form-check-primary form-switch">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                wire:model='user_status'>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                            </tr>
 
 
-                                </tbody>
-                            </table>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                            <div class="d-flex justify-content-between mt-1">
+                                <button class="btn btn-primary" wire:click="step('info')">
+                                    <i data-feather="chevron-left" class="align-middle me-sm-25 me-0"></i>
+                                    <span class="align-middle d-sm-inline-block d-none">السابق</span>
+                                </button>
+
+                                <button class="btn btn-success" wire:click="store">
+                                    <i data-feather="check" class="align-middle me-sm-25 me-0"></i>
+                                    <span class="align-middle d-sm-inline-block d-none">حفظ</span>
+                                </button>
+                            </div>
+
                         </div>
-                    </div>
-
-
-                    <div class="d-flex justify-content-between mt-1">
-                        <button class="btn btn-primary" wire:click="step('info')">
-                            <i data-feather="chevron-left" class="align-middle me-sm-25 me-0"></i>
-                            <span class="align-middle d-sm-inline-block d-none">السابق</span>
-                        </button>
-
-                        <button class="btn btn-success" wire:click="store">
-                            <i data-feather="check" class="align-middle me-sm-25 me-0"></i>
-                            <span class="align-middle d-sm-inline-block d-none">حفظ</span>
-                        </button>
-                    </div>
-
-                </div>
 
             </div>
         </div>
