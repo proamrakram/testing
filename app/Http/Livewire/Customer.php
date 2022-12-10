@@ -19,8 +19,8 @@ class Customer extends Component
     public $customer_status = null;
     public $customer_city_id;
     public $customer_sector;
+    public $is_buy;
     public $filters = [];
-
 
     public function updateCustomers()
     {
@@ -32,11 +32,13 @@ class Customer extends Component
         $this->customer_status == 'all' ? $this->customer_status = null : null;
         $this->customer_sector == 'all' ? $this->customer_sector = null : null;
         $this->customer_city_id == 'all' ? $this->customer_city_id = null : null;
+        $this->is_buy == 'all' ? $this->is_buy = null : null;
 
         $this->filters['search'] = $this->search;
         $this->filters['customer_status'] = $this->customer_status;
         $this->filters['city_id'] = $this->customer_city_id;
         $this->filters['employee_type'] = $this->customer_sector;
+        $this->filters['is_buy'] = $this->is_buy;
 
         return ModelsCustomer::data()->filters($this->filters)->paginate($this->rows_number);
     }

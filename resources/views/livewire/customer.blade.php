@@ -73,6 +73,15 @@
                                 </select>
                             </label>
 
+                            <label>هل اشترى:
+                                <select wire:model='is_buy' class="form-select"
+                                    style="margin-left: .5em; display: inline-block; width: auto;">
+                                    <option value="all" selected>الكل</option>
+                                    <option value="1" selected>اشترى</option>
+                                    <option value="2" selected>لم يشتري</option>
+                                </select>
+                            </label>
+
 
                             <label>ابحث:<input type="search" wire:model='search' class="form-control"
                                     placeholder="الاسم/ رقم الهاتف"></label>
@@ -135,7 +144,7 @@
                                 </td>
 
                                 <td>
-                                    @if ($customer->is_buy)
+                                    @if ($customer->is_buy == 1)
                                         <span class="badge bg-success">نعم</span>
                                     @else
                                         <span class="badge bg-danger">ليس بعد</span>

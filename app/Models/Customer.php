@@ -55,7 +55,8 @@ class Customer extends Model
             'search' => '',
             'customer_status' => null,
             'city_id' => null,
-            'employee_type' => null
+            'employee_type' => null,
+            'is_buy' => null,
         ], $filters);
 
         $builder->when($filters['search'] != '', function ($query) use ($filters) {
@@ -74,6 +75,10 @@ class Customer extends Model
 
         $builder->when($filters['search'] == '' && $filters['city_id'] != null, function ($query) use ($filters) {
             $query->where('city_id', $filters['city_id']);
+        });
+
+        $builder->when($filters['search'] == '' && $filters['is_buy'] != null, function ($query) use ($filters) {
+            $query->where('is_buy', $filters['is_buy']);
         });
     }
 

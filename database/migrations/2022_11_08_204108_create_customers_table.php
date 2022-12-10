@@ -31,10 +31,10 @@ return new class extends Migration
             $table->integer('addtional_number')->nullable();
             $table->integer('unit_number')->nullable();
             $table->boolean('support_eskan')->nullable();
-            $table->boolean('is_buy')->nullable();
             $table->enum('employee_type', ['public', 'private'])->nullable();
 
             $table->enum('status', [1, 2])->nullable()->default(1);
+            $table->enum('is_buy', [1, 2])->nullable()->default(1);
 
 
             $table->integer('who_add')->nullable();
