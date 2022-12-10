@@ -161,13 +161,15 @@ class CreateUser extends Component
         $data = $this->validate();
 
         if ($this->is_officer) {
-            if (!$this->advertiser_number) {
+            if ($this->advertiser_number) {
                 $this->validate(['advertiser_number' => 'required'], ['advertiser_number.required' => 'هذا الحقل مطلوب!!']);
             }
         }
 
         if (!$this->advertiser_number) {
             $data['advertiser_number'] = null;
+        } else {
+            $data['advertiser_number'] = $this->advertiser_number;
         }
 
         $userService->store($data);
