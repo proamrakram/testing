@@ -35,7 +35,8 @@ class CustomerService extends Controller
             'unit_number' => $data['unit_number'] ?? null,
             'support_eskan' => $data['is_support'] == "yes" ? 1 : 0,
             'employee_type' => $data['employee_type'] ?? null,
-            'status' => $data['status']
+            'status' => $data['status'],
+            'is_buy' => $data['is_buy']
             // 'who_add',
             // 'who_edit',
         ]);
@@ -62,7 +63,9 @@ class CustomerService extends Controller
             'support_eskan' => $data['is_support'],
             'employee_type' => $data['employee_type'],
             'who_edit' => auth()->id(),
-            'status' => $data['status']
+            'status' => $data['status'],
+            'is_buy' => $data['is_buy']
+
         ]);
 
         return true;

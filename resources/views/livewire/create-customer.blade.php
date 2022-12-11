@@ -21,17 +21,17 @@
                 <div class="modal-header bg-transparent">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body pb-3 px-sm-3">
+                <div class="modal-body pb-3 px-sm-3" wire:ignore.self>
                     <h1 class="text-center mb-1" id="createAppTitle">إنشاء حساب عميل</h1>
-                    <p class="text-center mb-2"></p>
-                    <div class="bs-stepper vertical wizard-modern create-app-wizard">
+                    <p class="text-center mb-2" wire:ignore.self></p>
+                    <div class="bs-stepper vertical wizard-modern create-app-wizard" wire:ignore.self>
 
 
-                        <div class="bs-stepper-header" role="tablist">
+                        <div class="bs-stepper-header" role="tablist" wire:ignore.self>
 
                             <div class="step" data-target="#create-app-details-main" role="tab"
-                                id="create-app-details-trigger-main">
-                                <button type="button" class="step-trigger py-75">
+                                id="create-app-details-trigger-main" wire:ignore.self>
+                                <button type="button" class="step-trigger py-75" wire:ignore.self>
                                     <span
                                         class="bs-stepper-box
                                     @if ($errors->has('name') ||
@@ -43,7 +43,7 @@
                                             <i data-feather="info" class="font-medium-3"></i>
                                         </span>
                                     </span>
-                                    <span class="bs-stepper-label">
+                                    <span class="bs-stepper-label" wire:ignore.self>
                                         <span
                                             class="bs-stepper-title @if ($errors->has('name') ||
                                                 $errors->has('phone') ||
@@ -54,7 +54,7 @@
 
                                         </span>
 
-                                        <span class="bs-stepper-subtitle"></span>
+                                        <span class="bs-stepper-subtitle" wire:ignore.self></span>
 
                                     </span>
                                 </button>
@@ -62,8 +62,8 @@
 
 
                             <div class="step" data-target="#create-app-frameworks-main" role="tab"
-                                id="create-app-frameworks-trigger-main">
-                                <button type="button" class="step-trigger py-75">
+                                id="create-app-frameworks-trigger-main" wire:ignore.self>
+                                <button type="button" class="step-trigger py-75" wire:ignore.self>
                                     <span
                                         class="bs-stepper-box
                                     @if ($errors->has('employee_type') || $errors->has('employer_name') || $errors->has('is_support')) bg-danger @endif
@@ -72,19 +72,19 @@
                                             <i data-feather="file-text" class="font-medium-3"></i>
                                         </span>
                                     </span>
-                                    <span class="bs-stepper-label">
+                                    <span class="bs-stepper-label" wire:ignore.self>
                                         <span
                                             class="bs-stepper-title  @if ($errors->has('employee_type') || $errors->has('employer_name') || $errors->has('is_support')) text-danger @endif ">معلومات
                                             جهة
                                             العمل</span>
-                                        <span class="bs-stepper-subtitle"></span>
+                                        <span class="bs-stepper-subtitle" wire:ignore.self></span>
                                     </span>
                                 </button>
                             </div>
 
                             <div class="step" data-target="#create-app-database-main" role="tab"
-                                id="create-app-database-trigger-main">
-                                <button type="button" class="step-trigger py-75">
+                                id="create-app-database-trigger-main" wire:ignore.self>
+                                <button type="button" class="step-trigger py-75" wire:ignore.self>
                                     <span
                                         class="bs-stepper-box
                                         @if ($errors->has('city_id') ||
@@ -112,7 +112,7 @@
 
                                         ">العنوان
                                             الوطني</span>
-                                        <span class="bs-stepper-subtitle"></span>
+                                        <span class="bs-stepper-subtitle" wire:ignore.self></span>
                                     </span>
                                 </button>
                             </div>
@@ -176,6 +176,19 @@
                                         </select>
 
                                         @error('status')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12 col-md-6 mb-1">
+                                        <label class="form-label">هل اشترى العميل؟</label>
+
+                                        <select class="form-control form-select" wire:model='is_buy'>
+                                            <option value="1">نعم</option>
+                                            <option value="2">لا</option>
+                                        </select>
+
+                                        @error('is_buy')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>

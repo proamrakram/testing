@@ -29,7 +29,7 @@ return new class extends Migration
             $table->boolean('support_eskan')->default(0);
 
             $table->integer('property_type_id');
-            $table->integer('city_id');
+            $table->integer('city_id')->nullable();
 
             $table->double('area');
             $table->double('price_from');

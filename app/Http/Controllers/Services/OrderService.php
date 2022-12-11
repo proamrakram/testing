@@ -47,7 +47,7 @@ class OrderService extends Controller
             'name' => $data['customer_name'],
             'phone' => $data['customer_phone'],
             'employer_name' => $data['employer_name'],
-            // 'city_id' => $data['city_id'],
+            'city_id' => $data['city_id'],
             'support_eskan' => $data['support_eskan'],
             'employee_type' => $data['employee_type'],
             'who_edit' => auth()->id(),

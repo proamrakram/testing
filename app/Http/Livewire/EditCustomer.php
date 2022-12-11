@@ -31,6 +31,8 @@ class EditCustomer extends Component
     public $basic_active = 'active';
     public $work_active = '';
     public $eskan_active = '';
+    public $is_buy = 2;
+
 
     protected function rules()
     {
@@ -49,7 +51,8 @@ class EditCustomer extends Component
             'zip_code' => ['nullable'],
             'additional_number' => ['nullable'],
             'unit_number' => ['nullable'],
-            'status' => ['in:1,2']
+            'status' => ['in:1,2'],
+            'is_buy' => ['in:1,2']
         ];
     }
 
@@ -102,6 +105,7 @@ class EditCustomer extends Component
         $this->additional_number = $customer->addtional_number;
         $this->unit_number = $customer->unit_number;
         $this->status = $customer->status;
+        $this->is_buy = $customer->is_buy;
     }
 
 

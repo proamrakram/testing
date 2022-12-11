@@ -171,6 +171,20 @@
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
+
+
+                                    <div class="col-12 col-md-6 mb-1">
+                                        <label class="form-label">هل اشترى العميل؟</label>
+
+                                        <select class="form-control form-select" wire:model='is_buy'>
+                                            <option value="1">نعم</option>
+                                            <option value="2">لا</option>
+                                        </select>
+
+                                        @error('is_buy')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
                                 </div>
 
                                 <div class="d-flex justify-content-between mt-2">

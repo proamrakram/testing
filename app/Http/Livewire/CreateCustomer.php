@@ -27,6 +27,7 @@ class CreateCustomer extends Component
     public $additional_number = null;
     public $unit_number = null;
     public $status = 1;
+    public $is_buy = 2;
 
 
     public function render()
@@ -51,7 +52,8 @@ class CreateCustomer extends Component
             'zip_code' => ['nullable', 'numeric'],
             'additional_number' => ['nullable', 'numeric'],
             'unit_number' => ['nullable', 'numeric'],
-            'status' => ['in:1,2']
+            'status' => ['in:1,2'],
+            'is_buy' => ['in:1,2']
         ];
     }
 
